@@ -14,7 +14,7 @@ const BookmarkCard = ({ card }) => {
   const dispatch = useDispatch();
   const navToURL = (url) => {
     const urlFix = createFullUrl(url);
-    window.location.href = urlFix;
+    window.open(urlFix, "_blank").focus();
   };
   const deleteHandler = (id) => {
     dispatch(removeBookmark(id));
