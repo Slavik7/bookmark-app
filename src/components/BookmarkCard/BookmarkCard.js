@@ -10,7 +10,9 @@ import {
   saveBookmarks,
 } from "../../store/actions";
 import { useDispatch } from "react-redux";
+
 const BookmarkCard = ({ card }) => {
+  const urlUI = card.url.length > 40 ? `${card.url.slice(0, 41)}...` : card.url;
   const dispatch = useDispatch();
   const navToURL = (url) => {
     const urlFix = createFullUrl(url);
@@ -25,7 +27,7 @@ const BookmarkCard = ({ card }) => {
     <S.Card>
       <S.CardDetails onClick={() => navToURL(card.url)}>
         <Text variant="body1">{card.title}</Text>
-        <Text variant="body2">{card.url}</Text>
+        <Text variant="body2">{urlUI}</Text>
       </S.CardDetails>
       <S.CardActions>
         <IconButton size="small" onClick={() => deleteHandler(card.id)}>
